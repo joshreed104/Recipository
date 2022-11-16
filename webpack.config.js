@@ -14,17 +14,20 @@ module.exports = {
     static: ['./public'],
     hot: true,
     open: true,
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './public/index.html',
-      filename: './index.html',
-    }),
-    new MiniCssExtractPlugin(),
-  ],
+  // plugins: [
+  //   new HtmlWebPackPlugin({
+  //     template: './public/index.html',
+  //     filename: './index.html',
+  //   }),
+  //   new MiniCssExtractPlugin(),
+  // ],
   module: {
     rules: [
       {

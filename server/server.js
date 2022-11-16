@@ -3,12 +3,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const recipeController = require('./recipeController');
-
+require('dotenv').config();
 const app = express();
 
 // MongoDB Atlas Connection
-const atlasUri =
-  'mongodb+srv://joshuser:5ZuMe6lvcoHkQ3GR@recipedatabase.7lq7hk3.mongodb.net/?retryWrites=true&w=majority';
+const atlasUri = process.env.MONGO_URI;
 PORT = 3000;
 mongoose.connect(atlasUri);
 mongoose.connection.once('open', () => {
@@ -24,11 +23,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Routing
-app.get('/get-recipes', recipeController.getRecipes, (req, res) => {
+app.get('/api/get-recipes', recipeController.getRecipes, (req, res) => {
   res.status(200).json(res.locals.recipes);
 });
 
-app.post('/add-recipe', recipeController.addRecipe, (req, res) => {
+app.post('/api/add-recipe', recipeController.addRecipe, (req, res) => {
   res.status(200).json(res.locals.recipe);
 });
 

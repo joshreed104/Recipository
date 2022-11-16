@@ -4,8 +4,15 @@ const Recipe = require('./RecipeModel');
 
 module.exports = {
   addRecipe: async (req, res, next) => {
-    const { name, stars, ingredients, source, timeRequired, dateCreated } =
-      req.body;
+    const {
+      name,
+      stars,
+      ingredients,
+      source,
+      timeRequired,
+      dateCreated,
+      tried,
+    } = req.body;
     try {
       const newRecipe = await Recipe.create({
         name,
@@ -14,10 +21,12 @@ module.exports = {
         source,
         timeRequired,
         dateCreated,
+        tried,
       });
       res.locals.recipe = newRecipe;
       return next();
     } catch (error) {
+      console.log(req.body);
       return next(createError(error, 'recipeController.addRecipe'));
     }
   },
@@ -31,6 +40,11 @@ module.exports = {
           return next();
         }
       }
+
+      // if getting all recipes, sort newest to oldest
+      const foundRecipes = await Recipe.find({}).sort({ dateCreated: -1 });
+      res.locals.recipes = foundRecipes;
+      return next();
     } catch (error) {
       return next(createError(error, 'recipeController.getRecipe'));
     }

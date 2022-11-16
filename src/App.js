@@ -3,10 +3,10 @@ import RecipeContainer from './RecipeContainer';
 
 const App = () => {
   return (
-    <div>
+    <main>
       <h1>Weclome to Recipe Tracker</h1>
-      {/* <RecipeContainer /> */}
-    </div>
+      <RecipeContainer />
+    </main>
   );
 };
 
