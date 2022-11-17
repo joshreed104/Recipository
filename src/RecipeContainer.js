@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RecipeAdder from './RecipeAdder';
-import RecipeViewer from './RecipeViewer';
+import Recipe from './Recipe';
 
 const RecipeContainer = () => {
   // set state
@@ -39,7 +39,7 @@ const RecipeContainer = () => {
       const { name, stars, ingredients, source, timeRequired, dateCreated } =
         recipe;
       recipesToRender.push(
-        <RecipeViewer
+        <Recipe
           key={i}
           index={i}
           name={name}
@@ -55,11 +55,12 @@ const RecipeContainer = () => {
     recipesToRender.push(<p>No recipes to show, try adding some!</p>);
   }
   return (
-    <div>
-      <RecipeAdder setRecipeList={setRecipeList} recipeList={recipeList} />
-      {recipesToRender}
-      {/* <RecipeViewer name={recipesToRender[0].name} /> */}
-    </div>
+    <section>
+      <div className='recipe-adder'>
+        <RecipeAdder setRecipeList={setRecipeList} recipeList={recipeList} />
+      </div>
+      <div className='recipe-viewer'>{recipesToRender}</div>
+    </section>
   );
 };
 

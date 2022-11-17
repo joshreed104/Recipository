@@ -21,13 +21,13 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
   },
-  // plugins: [
-  //   new HtmlWebPackPlugin({
-  //     template: './public/index.html',
-  //     filename: './index.html',
-  //   }),
-  //   new MiniCssExtractPlugin(),
-  // ],
+  plugins: [
+    //   new HtmlWebPackPlugin({
+    //     template: './public/index.html',
+    //     filename: './index.html',
+    //   }),
+    new MiniCssExtractPlugin(),
+  ],
   module: {
     rules: [
       {
@@ -43,7 +43,8 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          // MiniCssExtractPlugin.loader,
+          'style-loader',
           'css-loader',
           {
             loader: 'sass-loader',

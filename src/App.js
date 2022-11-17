@@ -4,8 +4,19 @@ import RecipeContainer from './RecipeContainer';
 const App = () => {
   return (
     <main>
-      <h1>Weclome to Recipe Tracker</h1>
+      <header>
+        <h1 id='main-title'>Recipository</h1>
+      </header>
+      <nav>
+        <ul>
+          <li>Add Recipe</li>
+          <li>View Recipes</li>
+        </ul>
+      </nav>
       <RecipeContainer />
+      <footer>
+        <p>Copyright nothing do whatever you want</p>
+      </footer>
     </main>
   );
 };

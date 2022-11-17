@@ -42,8 +42,8 @@ const RecipeAdder = (props) => {
   };
 
   return (
-    <section>
-      <h1>Recipe Adder</h1>
+    <section className='add-recipe'>
+      <h1>Add a new recipe</h1>
       <input id='dish' placeholder='Name of dish'></input>
       <input id='ingredients' placeholder='Ingredients'></input>
       <input id='source' placeholder='Recipe source'></input>
