@@ -94,6 +94,8 @@ const RecipeContainer = () => {
           <option value='2'>Two Stars Only</option>
           <option value='1'>One Star Only</option>
         </select>
+        <label>Or: </label>
+        <button>Show only untried recipes</button>
       </div>
       <div className='recipe-viewer'>{recipesToRender}</div>
     </section>
