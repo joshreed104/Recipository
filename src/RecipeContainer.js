@@ -12,18 +12,37 @@ const RecipeContainer = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Filter-Stars': 5,
+        filterstars: stars,
       },
     })
       .then((response) => response.json())
       .then((data) => {
         console.log('fetch data', data);
-        const newRecipeList = [...recipeList, ...data];
-        if (data.length > 0) setRecipeList(newRecipeList);
+        if (stars === undefined) {
+          const newRecipeList = [...recipeList, ...data];
+          if (data.length > 0) setRecipeList(newRecipeList);
+        } else if (stars === 'all') {
+          setRecipeList([...data]);
+        } else {
+          if (data.length > 0) {
+            const newRecipeList = [...data];
+            if (newRecipeList.length > 0) setRecipeList(newRecipeList);
+          } else {
+            setRecipeList([]);
+          }
+          console.log(newRecipeList);
+        }
       })
       .catch((error) => {
         console.log(`Error getting recipes: ${error}`);
       });
+  };
+
+  const filterStars = () => {
+    const dropdownArray = document.getElementById('star-filter');
+    const stars = dropdownArray.options[dropdownArray.selectedIndex].value;
+    console.log(stars);
+    return getRecipes(stars);
   };
 
   /*
@@ -64,6 +83,19 @@ const RecipeContainer = () => {
     <section>
       <div className='recipe-adder'>
         <RecipeAdder setRecipeList={setRecipeList} recipeList={recipeList} />
+      </div>
+      <div className='filter-box'>
+        <label>Filter Results: </label>
+        <select id='star-filter' placeholder='Stars' onChange={filterStars}>
+          <option value='all'>All</option>
+          <option value='5'>Five Stars Only</option>
+          <option value='4'>Four Stars Only</option>
+          <option value='3'>Three Stars Only</option>
+          <option value='2'>Two Stars Only</option>
+          <option value='1'>One Star Only</option>
+        </select>
+        <label>Or: </label>
+        <button>Show only untried recipes</button>
       </div>
       <div className='recipe-viewer'>{recipesToRender}</div>
     </section>
