@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body {
-  background-color: rgb(71, 71, 71);
+  background-color: rgba(121, 88, 88, 0.824);
   min-height: 100%;
   color: #fff;
   //@include background-image(radial-gradient(center, #eee 0%,#bbb 100%));
@@ -26,6 +26,16 @@ nav {
   li {
     float: left;
     margin: auto 50px;
+    font-size: 30px;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  a {
+    color: rgb(255, 255, 255);
+  }
+  li:hover {
+    -webkit-box-shadow: -1px -1px 21px 3px rgba(123, 123, 123, 0.26);
+    box-shadow: -1px -1px 21px 3px rgba(218, 218, 218, 0.2);
   }
 }
 main {
@@ -114,16 +124,46 @@ main {
   }
 }
 
+.filter-box {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  label {
+    font-size: 24px;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  select {
+    align-self: center;
+    border-radius: 10px;
+    height: 40px;
+    max-width: 40%;
+    margin: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+  }
+}
+
 .recipe-viewer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: left;
+  width: max;
+  flex-wrap: wrap;
+  div:hover {
+    background-color: rgb(121, 88, 88);
+  }
 }
 
 .recipe-box {
   display: flex;
   flex-direction: column;
-  min-width: 20%;
+  flex-wrap: wrap;
+  min-width: 40%;
   padding: 30px;
   margin: 20px;
   border-radius: 20px;
@@ -137,7 +177,7 @@ main {
   }
   .recipe-buttons {
     display: flex;
-    justify-items: right;
+    justify-content: right;
     button {
       // justify-self: right;
       margin: 10px;
