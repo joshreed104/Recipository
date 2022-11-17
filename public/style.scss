@@ -23,11 +23,16 @@ li {
 nav {
   display: flex;
   justify-content: center;
+  li {
+    float: left;
+    margin: auto 50px;
+  }
 }
 main {
   header {
     display: flex;
     justify-content: center;
+    font-size: 50px;
   }
 }
 
@@ -42,36 +47,77 @@ main {
   color: orange;
 }
 
-.add-recipe {
+.add-recipe-box {
   display: flex;
-  align-items: center;
-  width: max;
   flex-direction: column;
   border: solid 1px;
   border-radius: 20px;
-  input {
-    // display: flex;
-    border-radius: 20px;
-    height: 20px;
-    width: 50%;
+  h1 {
+    align-self: center;
   }
-
-  select {
-    width: 50%;
+  .add-recipe {
+    display: flex;
+    align-items: center;
+    width: max;
+    flex-direction: row;
+    .inputs {
+      display: flex;
+      width: 50%;
+      flex-direction: column;
+      input {
+        // display: flex;
+        border-radius: 10px;
+        height: 20px;
+        max-width: 100%;
+        margin: 10px;
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+  .selectors {
+    display: flex;
+    flex-direction: column;
+    label {
+      align-self: center;
+      padding: 10px;
+      font-size: 20px;
+    }
+    select {
+      align-self: center;
+      border-radius: 10px;
+      height: 40px;
+      max-width: 100%;
+      margin: 10px;
+      padding-left: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      width: 80%;
+    }
   }
 
   button {
+    align-self: center;
+    margin: 10px;
     height: 30px;
     width: 100px;
     border-radius: 20px;
     border: none;
-    background-color: rgb(237, 215, 237);
+    background-color: #ffffff;
+  }
+  button:hover {
+    -webkit-box-shadow: -1px -1px 21px 3px rgba(123, 123, 123, 0.26);
+    box-shadow: -1px -1px 21px 3px rgba(218, 218, 218, 0.2);
+    height: 32px;
+    width: 104px;
   }
 }
 
 .recipe-viewer {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
 }
 
 .recipe-box {
@@ -81,10 +127,33 @@ main {
   padding: 30px;
   margin: 20px;
   border-radius: 20px;
-  border: solid 1px;
+  // border: solid 1px;
   border-color: #d3f3d9;
   -webkit-box-shadow: -1px -1px 21px 3px rgba(123, 123, 123, 0.26);
   box-shadow: -1px -1px 21px 3px rgba(218, 218, 218, 0.2);
+  li {
+    padding: 10px;
+    font-size: 20px;
+  }
+  .recipe-buttons {
+    display: flex;
+    justify-items: right;
+    button {
+      // justify-self: right;
+      margin: 10px;
+      height: 30px;
+      width: 100px;
+      border-radius: 20px;
+      border: none;
+      background-color: #ffffff;
+    }
+    button:hover {
+      -webkit-box-shadow: -1px -1px 21px 3px rgba(123, 123, 123, 0.26);
+      box-shadow: -1px -1px 21px 3px rgba(218, 218, 218, 0.2);
+      height: 32px;
+      width: 104px;
+    }
+  }
 }
 
 footer {

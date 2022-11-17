@@ -33,6 +33,7 @@ module.exports = {
   getRecipes: async (req, res, next) => {
     try {
       if (req.body.stars) {
+        console.log(req.headers);
         const { stars } = req.body;
         if (stars.exact === true) {
           const foundRecipes = await Recipe.find({ stars: stars.amount });
@@ -40,7 +41,7 @@ module.exports = {
           return next();
         }
       }
-
+      console.log('hello');
       // if getting all recipes, sort newest to oldest
       const foundRecipes = await Recipe.find({}).sort({ dateCreated: -1 });
       res.locals.recipes = foundRecipes;

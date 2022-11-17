@@ -31,7 +31,6 @@ const RecipeAdder = (props) => {
           tried,
         }),
       });
-      // FIX THIS
       const newRecipe = await response.json();
       console.log(newRecipe);
       const newRecipeList = [newRecipe, ...props.recipeList];
@@ -42,30 +41,38 @@ const RecipeAdder = (props) => {
   };
 
   return (
-    <section className='add-recipe'>
-      <h1>Add a new recipe</h1>
-      <input id='dish' placeholder='Name of dish'></input>
-      <input id='ingredients' placeholder='Ingredients'></input>
-      <input id='source' placeholder='Recipe source'></input>
-      <input id='sourceUrl' placeholder='Link to recipe'></input>
-      <input id='timeRequired' placeholder='Time required (minutes)'></input>
+    <div className='add-recipe-box'>
+      <h1>ADD A NEW RECIPE</h1>
+      <section className='add-recipe'>
+        <div className='inputs'>
+          <input id='dish' placeholder='Name of dish'></input>
+          <input id='ingredients' placeholder='Ingredients'></input>
+          <input id='source' placeholder='Recipe source'></input>
+          <input id='sourceUrl' placeholder='Link to recipe'></input>
+          <input
+            id='timeRequired'
+            placeholder='Time required (minutes)'
+          ></input>
+        </div>
+        <div className='selectors'>
+          <label htmlFor='tried'>Have you already tried this recipe?</label>
+          <select name='tried' id='tried'>
+            <option value='true'>Yes I've tried it!</option>
+            <option value='false'>Nope, saving for later</option>
+          </select>
 
-      <label htmlFor='tried'>Have you already tried this recipe?</label>
-      <select name='tried' id='tried'>
-        <option value='true'>Yes I've tried it!</option>
-        <option value='false'>Nope, saving for later</option>
-      </select>
-
-      <label htmlFor='stars'>How'd you like it?</label>
-      <select name='stars' id='stars'>
-        <option value='5'>*****</option>
-        <option value='4'>****</option>
-        <option value='3'>***</option>
-        <option value='2'>**</option>
-        <option value='1'>*</option>
-      </select>
+          <label htmlFor='stars'>How'd you like it?</label>
+          <select name='stars' id='stars'>
+            <option value='5'>*****</option>
+            <option value='4'>****</option>
+            <option value='3'>***</option>
+            <option value='2'>**</option>
+            <option value='1'>*</option>
+          </select>
+        </div>
+      </section>
       <button onClick={handleClick}>Add Recipe</button>
-    </section>
+    </div>
   );
 };
 

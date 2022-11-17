@@ -7,8 +7,14 @@ const RecipeContainer = () => {
   const [recipeList, setRecipeList] = useState([]);
   // right now only gets all recipes in database.
   //TODO: allow search parameters, default to last 10
-  const getRecipes = () => {
-    fetch('/api/get-recipes')
+  const getRecipes = (stars) => {
+    fetch('/api/get-recipes', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Filter-Stars': 5,
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log('fetch data', data);
