@@ -44,8 +44,8 @@ const RecipeContainer = () => {
     return getRecipes(stars);
   };
 
-  const filterTried = () => {
-    getRecipes('false');
+  const filterTried = (e) => {
+    getRecipes(e.target.id);
   };
 
   /*
@@ -98,7 +98,12 @@ const RecipeContainer = () => {
           <option value='1'>One Star Only</option>
         </select>
         <label>Or: </label>
-        <button onClick={filterTried}>Show only untried recipes</button>
+        <button id='true' onClick={filterTried}>
+          Show only rated recipes
+        </button>
+        <button id='false' onClick={filterTried}>
+          Show only untried recipes
+        </button>
       </div>
       <div className='recipe-viewer'>{recipesToRender}</div>
     </section>

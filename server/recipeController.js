@@ -33,7 +33,7 @@ module.exports = {
     try {
       if (req.headers.filter !== 'undefined' && req.headers.filter !== 'all') {
         const { filter } = req.headers;
-        if (filter != 'false') {
+        if (filter != 'false' && filter != 'true') {
           const foundRecipes = await Recipe.find({ stars: filter }).sort({
             dateCreated: -1,
           });
