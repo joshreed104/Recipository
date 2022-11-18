@@ -31,6 +31,15 @@ app.post('/api/add-recipe', recipeController.addRecipe, (req, res) => {
   res.status(200).json(res.locals.recipe);
 });
 
+app.delete(
+  '/api/delete-recipe/:id',
+  recipeController.deleteRecipe,
+  (req, res) => {
+    console.log('end of endpoint');
+    res.status(200).json(res.locals.recipe);
+  }
+);
+
 app.use('/', (req, res) => {
   res.status(404).send('Page not found');
 });

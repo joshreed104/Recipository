@@ -54,4 +54,15 @@ module.exports = {
       return next(createError(error, 'recipeController.getRecipe'));
     }
   },
+  deleteRecipe: async (req, res, next) => {
+    try {
+      console.log(req.params);
+      const { id } = req.params;
+      const deleted = await Recipe.deleteOne({ _id: id });
+      res.locals.recipe = deleted;
+      return next();
+    } catch (error) {
+      return next(createError(error, 'recipeController.deleteRecipe'));
+    }
+  },
 };

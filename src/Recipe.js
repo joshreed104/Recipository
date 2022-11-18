@@ -28,7 +28,14 @@ const Recipe = (props) => {
       </ul>
       <div className='recipe-buttons'>
         <button className='edit-button'>Edit Recipe</button>
-        <button className='delete-button'>Delete</button>
+        <button
+          id={props.recipeId}
+          index={props.index}
+          onClick={props.deleteRecipe}
+          className='delete-button'
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

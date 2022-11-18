@@ -48,6 +48,27 @@ const RecipeContainer = () => {
     getRecipes(e.target.id);
   };
 
+  const deleteRecipe = (e) => {
+    const recipeId = e.target.id;
+    const recipeIndex = e.target.index;
+    fetch(`/api/delete-recipe/${recipeId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // const newRecipeList = [...recipeList];
+        // newRecipeList.splice(recipeIndex, 1);
+        // setRecipeList(newRecipeList);
+      })
+      .catch((error) => {
+        console.log(`Error deleting recipe: ${error}`);
+      });
+  };
+
   /*
   equivalent to componentDidMount - final argument (no recipes to show...) is
   the only condition on which it will fire
@@ -64,12 +85,21 @@ const RecipeContainer = () => {
   if (recipeList.length > 0) {
     for (let i = 0; i < recipeList.length; i++) {
       const recipe = recipeList[i];
-      const { name, stars, ingredients, source, timeRequired, dateCreated } =
-        recipe;
+      const {
+        name,
+        stars,
+        ingredients,
+        source,
+        timeRequired,
+        dateCreated,
+        _id,
+      } = recipe;
       recipesToRender.push(
         <Recipe
           key={i}
           index={i}
+          deleteRecipe={deleteRecipe}
+          recipeId={_id}
           name={name}
           stars={stars}
           ingredients={ingredients}
