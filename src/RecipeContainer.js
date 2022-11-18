@@ -7,12 +7,12 @@ const RecipeContainer = () => {
   const [recipeList, setRecipeList] = useState([]);
   // right now only gets all recipes in database.
   //TODO: allow search parameters, default to last 10
-  const getRecipes = (stars) => {
+  const getRecipes = (filter) => {
     fetch('/api/get-recipes', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        filterstars: stars,
+        filter,
       },
     })
       .then((response) => response.json())
@@ -41,8 +41,11 @@ const RecipeContainer = () => {
   const filterStars = () => {
     const dropdownArray = document.getElementById('star-filter');
     const stars = dropdownArray.options[dropdownArray.selectedIndex].value;
-    console.log(stars);
     return getRecipes(stars);
+  };
+
+  const filterTried = () => {
+    getRecipes('false');
   };
 
   /*
@@ -95,7 +98,7 @@ const RecipeContainer = () => {
           <option value='1'>One Star Only</option>
         </select>
         <label>Or: </label>
-        <button>Show only untried recipes</button>
+        <button onClick={filterTried}>Show only untried recipes</button>
       </div>
       <div className='recipe-viewer'>{recipesToRender}</div>
     </section>

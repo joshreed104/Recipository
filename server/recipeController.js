@@ -31,16 +31,19 @@ module.exports = {
   },
   getRecipes: async (req, res, next) => {
     try {
-      if (
-        req.headers.filterstars !== 'undefined' &&
-        req.headers.filterstars !== 'all'
-      ) {
-        const { filterstars } = req.headers;
-        console.log(filterstars);
-        const foundRecipes = await Recipe.find({ stars: filterstars }).sort({
-          dateCreated: -1,
-        });
-        res.locals.recipes = foundRecipes;
+      if (req.headers.filter !== 'undefined' && req.headers.filter !== 'all') {
+        const { filter } = req.headers;
+        if (filter != 'false') {
+          const foundRecipes = await Recipe.find({ stars: filter }).sort({
+            dateCreated: -1,
+          });
+          res.locals.recipes = foundRecipes;
+        } else {
+          const foundRecipes = await Recipe.find({ tried: filter }).sort({
+            dateCreated: -1,
+          });
+          res.locals.recipes = foundRecipes;
+        }
         return next();
       }
       // if getting all recipes, sort newest to oldest
