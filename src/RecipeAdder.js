@@ -63,6 +63,7 @@ const RecipeAdder = (props) => {
 
           <label htmlFor='stars'>How'd you like it?</label>
           <select name='stars' id='stars'>
+            <option value='0'>Out of 5 stars</option>
             <option value='5'>*****</option>
             <option value='4'>****</option>
             <option value='3'>***</option>

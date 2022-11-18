@@ -91,8 +91,9 @@ main {
 }
 
 .add-recipe-box {
-  justify-self: center;
   display: flex;
+  align-self: center;
+  margin: auto;
   flex-direction: column;
   border: solid 1px;
   border-radius: 20px;
@@ -102,6 +103,7 @@ main {
   }
   .add-recipe {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: max;
     flex-direction: row;
@@ -112,6 +114,7 @@ main {
       input {
         // display: flex;
         border-radius: 10px;
+        border: 0px;
         height: 20px;
         max-width: 100%;
         margin: 10px;
@@ -162,7 +165,8 @@ main {
 .recipe-viewer {
   display: flex;
   flex-direction: row;
-  align-items: left;
+  align-items: center;
+  justify-content: center;
   width: max;
   flex-wrap: wrap;
   div:hover {
@@ -175,6 +179,7 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   min-width: 40%;
+  max-width: 600px;
   padding: 30px;
   margin: 20px;
   border-radius: 20px;
@@ -182,7 +187,13 @@ main {
   border-color: #d3f3d9;
   -webkit-box-shadow: -1px -1px 21px 3px rgba(123, 123, 123, 0.26);
   box-shadow: -1px -1px 21px 3px rgba(218, 218, 218, 0.2);
+  .recipe-name {
+    max-width: 100%;
+  }
   li {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 70%;
     padding: 10px;
     font-size: 20px;
   }

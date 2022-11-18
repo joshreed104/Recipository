@@ -26,7 +26,6 @@ module.exports = {
       res.locals.recipe = newRecipe;
       return next();
     } catch (error) {
-      console.log(req.body);
       return next(createError(error, 'recipeController.addRecipe'));
     }
   },

@@ -12,7 +12,10 @@ const Recipe = (props) => {
   return (
     <div className='recipe-box'>
       <ul>
-        <li style={{ fontSize: 30, textEmphasis: true }}>
+        <li
+          className='recipe-name'
+          style={{ fontSize: 30, textEmphasis: true }}
+        >
           {props.name} {starsArray}
         </li>
         <li>Ingredients: {props.ingredients}</li>
